@@ -156,6 +156,7 @@ MonoBehaviour:
   - {fileID: 342625477250844931, guid: 9bff716e695893347add73579a58c012, type: 3}
   - {fileID: 1018440231605446837, guid: 5764f58d526081c45afb841fdfe7cd1f, type: 3}
   - {fileID: 1018440231605446837, guid: 4e2664141f252c7498208cffe2105c87, type: 3}
+  - {fileID: 2329805812140370787, guid: 92aacabbe660e684693c9593bf47de53, type: 3}
   gridSize: {x: 10, y: 10}
   parent: {fileID: 863806968}
   wallPref: {fileID: 1744140219005918704, guid: 16608fe5f0d1848429d3a15335775c49, type: 3}

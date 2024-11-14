@@ -81,8 +81,8 @@ public class GridManager : MonoBehaviour
             case GridPieceType.Spike:
                 GridPiece_Spikes gridPiece_Spikes = pieceObj.GetComponent<GridPiece_Spikes>();
                 gridPiece_Spikes.isWalkable = true;
-                gridPiece_Spikes.isEmpty = false;
-                //gridPiece_Spikes.(spikePref);
+                gridPiece_Spikes.isEmpty = true;
+                gridPiece_Spikes.CreateSpikes(spikePref);
                 piece = gridPiece_Spikes;
                 break;
         }
