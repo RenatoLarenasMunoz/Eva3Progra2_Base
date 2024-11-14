@@ -5,6 +5,8 @@ public enum GridPieceType
     Wall,
     DestructibleWall,
     Spike,
+    Win,
+    Key,
 }
 
 public enum EntityType

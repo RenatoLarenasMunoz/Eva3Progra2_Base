@@ -157,11 +157,15 @@ MonoBehaviour:
   - {fileID: 1018440231605446837, guid: 5764f58d526081c45afb841fdfe7cd1f, type: 3}
   - {fileID: 1018440231605446837, guid: 4e2664141f252c7498208cffe2105c87, type: 3}
   - {fileID: 2329805812140370787, guid: 92aacabbe660e684693c9593bf47de53, type: 3}
+  - {fileID: 4467518323712378377, guid: 4da74b4a9845f5743be0d981e43c3e22, type: 3}
+  - {fileID: 454856421429379879, guid: 34c2ad2ebc893744185171c72a8ef4ae, type: 3}
   gridSize: {x: 10, y: 10}
   parent: {fileID: 863806968}
   wallPref: {fileID: 1744140219005918704, guid: 16608fe5f0d1848429d3a15335775c49, type: 3}
   wallDestructiblePref: {fileID: 1744140219005918704, guid: 53914c0aa552e274b82143830c478cf5, type: 3}
   spikePref: {fileID: 2329805812140370787, guid: 92aacabbe660e684693c9593bf47de53, type: 3}
+  winPref: {fileID: 4467518323712378377, guid: 4da74b4a9845f5743be0d981e43c3e22, type: 3}
+  keyPref: {fileID: 454856421429379879, guid: 34c2ad2ebc893744185171c72a8ef4ae, type: 3}
 --- !u!4 &389208968
 Transform:
   m_ObjectHideFlags: 0

@@ -12,8 +12,13 @@ public class GridManager : MonoBehaviour
     public GameObject wallPref;
     public GameObject wallDestructiblePref;
     public GameObject spikePref;
+    public GameObject winPref;
+    public GameObject keyPref;
 
     public GridPiece[,] grid;
+
+    GridPiece_Win win;
+    GridPiece_Key key;
 
     private void Awake()
     {
@@ -25,6 +30,7 @@ public class GridManager : MonoBehaviour
     {
         //Inicializo la matriz (arreglo bidimensional) segun el tamaño de la grilla
         grid = new GridPiece[gridSize.x, gridSize.y];
+
 
         for (int x = 0; x < gridSize.x; x++)
         {
@@ -43,6 +49,8 @@ public class GridManager : MonoBehaviour
                 grid[x,z] = newPiece;
             }
         }
+
+        key.win = win;
     }
 
     //Se encarga de instanciar la pieza y setearla
@@ -85,8 +93,26 @@ public class GridManager : MonoBehaviour
                 gridPiece_Spikes.CreateSpikes(spikePref);
                 piece = gridPiece_Spikes;
                 break;
+            case GridPieceType.Win:
+                GridPiece_Win gridPiece_Win = pieceObj.GetComponent<GridPiece_Win>();
+                gridPiece_Win.isWalkable = true;
+                gridPiece_Win.isEmpty = true;
+                gridPiece_Win.isOpen = false;
+                gridPiece_Win.CreateWin(winPref);
+                piece = gridPiece_Win;
+                win = gridPiece_Win;
+                break;
+            case GridPieceType.Key:
+                GridPiece_Key gridPiece_Key = pieceObj.GetComponent<GridPiece_Key>();
+                gridPiece_Key.isWalkable = true;
+                gridPiece_Key.isEmpty = true;
+                gridPiece_Key.isAvaliable = true;
+                gridPiece_Key.CreateKey(keyPref);
+                piece = gridPiece_Key;
+                key = gridPiece_Key;
+                break;
         }
-
+        
         return piece;   
     }
 
@@ -105,6 +131,14 @@ public class GridManager : MonoBehaviour
         else if(pos.x == 3 && pos.y == 3)
         {
             gridPieceType = GridPieceType.Spike;
+        }
+        else if (pos.x == 7 && pos.y == 7)
+        {
+            gridPieceType = GridPieceType.Win;
+        }
+        else if (pos.x == 2 && pos.y == 5)
+        {
+            gridPieceType = GridPieceType.Key;
         }
         return gridPieceType;
     }
