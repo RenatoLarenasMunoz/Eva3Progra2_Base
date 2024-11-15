@@ -13,5 +13,12 @@ public enum EntityType
 { 
     Player,
     Bullet,
+    Enemy,
 }
 
+public enum EnemyType
+{
+    Basic,
+    Tank,
+    Fast,
+}
