@@ -6,6 +6,7 @@ public class GridEntity_Movible_Enemy : GridEntity_Movible
 {
     public GridEntity_Movible_Player player;
     public GridShooter gridShooter;
+    public float damage;
     public Vector2Int startPos;
     public Vector2Int playerOldPos;
     public Vector2Int playerPos;
@@ -19,6 +20,7 @@ public class GridEntity_Movible_Enemy : GridEntity_Movible
     private void Start()
     {
         SetEnemyPos(startPos);
+        damage = player.life;
     }
 
     public void SetEnemyPos(Vector2Int pos)
@@ -33,12 +35,17 @@ public class GridEntity_Movible_Enemy : GridEntity_Movible
 
         if (playerPos != playerOldPos)
         {
-            isMoving = true;
+            //isMoving = true;
             playerOldPos = playerPos;
 
-            Vector2Int dir = Vector2Int.zero;
+            //Vector2Int dir = Vector2Int.zero;
 
-            Move(dir);
+            //Move(dir);
+        }
+
+        if (gridPos == player.gridPos)
+        {
+            player.TakeDamage(damage);
         }
     }
 

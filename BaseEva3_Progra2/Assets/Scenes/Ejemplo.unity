@@ -163,7 +163,8 @@ MonoBehaviour:
   isMoving: 0
   player: {fileID: 2121975122}
   gridShooter: {fileID: 2121975121}
-  startPos: {x: 0, y: 0}
+  damage: 0
+  startPos: {x: 4, y: 5}
   playerOldPos: {x: 0, y: 0}
   playerPos: {x: 0, y: 0}
 --- !u!4 &29317505
@@ -622,7 +623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2405268839720847306, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: life
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2405268839720847306, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: bullet

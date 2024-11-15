@@ -12,7 +12,8 @@ public abstract class GridEntity : MonoBehaviour
 
     private void Awake()
     {
-        life = currentLife;
+        currentLife = life;
+        //life = currentLife;
         Awake2();
     }
 
@@ -21,7 +22,7 @@ public abstract class GridEntity : MonoBehaviour
     public virtual void TakeDamage(float dmg)
     {
         currentLife -= dmg;
-        if (life <= 0)
+        if (currentLife <= 0)
         {
             Die();
         }

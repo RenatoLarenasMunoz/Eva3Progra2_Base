@@ -17,7 +17,7 @@ public class GridPiece_Spikes : GridPiece
     public override void OnEntityEnter(GridEntity gridEntity)
     {
         base.OnEntityEnter(gridEntity);
-        currentGridEntity.TakeDamage(2);
+        currentGridEntity.TakeDamage(1);
     }
 
     public override void OnEntityExit()
