@@ -20,5 +20,4 @@ public enum EnemyType
 {
     Basic,
     Tank,
-    Fast,
 }
