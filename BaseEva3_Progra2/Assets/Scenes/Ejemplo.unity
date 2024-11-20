@@ -158,16 +158,11 @@ MonoBehaviour:
   life: 0
   currentLife: 0
   gridManager: {fileID: 389208967}
-  spd: 0
+  spd: 5
   yPos: 0
   isMoving: 0
   player: {fileID: 2121975122}
-  gridShooter: {fileID: 2121975121}
-  enemyType: 0
-  damage: 0
-  isStun: 0
   startPos: {x: 4, y: 5}
-  playerOldPos: {x: 0, y: 0}
 --- !u!4 &29317505
 Transform:
   m_ObjectHideFlags: 0
@@ -177,7 +172,7 @@ Transform:
   m_GameObject: {fileID: 29317503}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.45, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -224,9 +219,9 @@ MonoBehaviour:
   parent: {fileID: 863806968}
   wallPref: {fileID: 1744140219005918704, guid: 16608fe5f0d1848429d3a15335775c49, type: 3}
   wallDestructiblePref: {fileID: 1744140219005918704, guid: 53914c0aa552e274b82143830c478cf5, type: 3}
-  spikePref: {fileID: 2329805812140370787, guid: 92aacabbe660e684693c9593bf47de53, type: 3}
-  winPref: {fileID: 4467518323712378377, guid: 4da74b4a9845f5743be0d981e43c3e22, type: 3}
-  keyPref: {fileID: 454856421429379879, guid: 34c2ad2ebc893744185171c72a8ef4ae, type: 3}
+  spikePref: {fileID: 0}
+  winPref: {fileID: 0}
+  keyPref: {fileID: 0}
 --- !u!4 &389208968
 Transform:
   m_ObjectHideFlags: 0
@@ -626,6 +621,10 @@ PrefabInstance:
       propertyPath: life
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2405268839720847306, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 29317504}
     - target: {fileID: 2405268839720847306, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: bullet
       value: 

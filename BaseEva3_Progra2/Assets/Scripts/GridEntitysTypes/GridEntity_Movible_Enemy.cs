@@ -5,87 +5,80 @@ using UnityEngine;
 public class GridEntity_Movible_Enemy : GridEntity_Movible
 {
     public GridEntity_Movible_Player player;
-    public GridShooter gridShooter;
-    public EnemyType enemyType;
-    public float damage;
-    public bool isStun;
     public Vector2Int startPos;
-    public Vector2Int playerOldPos;
 
+    float timer;
+
+
+    public override void InteractWhitOtherEntity(GridEntity other)
+    {
+
+    }
 
     protected override void Awake2()
     {
 
     }
 
-    private void Start()
+    protected override void Die()
     {
-        SetEnemyPos(startPos);
-        damage = player.life;
-    }
 
-    public void SetEnemyPos(Vector2Int pos)
-    {
-        gridPos = pos;
-        gridManager.GetGridPiece(pos).OnEntityEnter(this);
     }
 
     protected override void Update2()
     {
-        /*switch (enemyType)
-        {
-            case EnemyType.Basic:
-                break;
-            case EnemyType.Tank:
-                break;
-        }*/
 
-        if (player.gridPos != playerOldPos)
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        gridPos = startPos;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (player.gridPos == gridPos)
         {
-            Vector2Int dir = player.gridPos - gridPos;
-            if (dir.x > 0)
+            player.TakeDamage(player.life);
+        }
+
+        if (player.isMoving || player.isShooting)
+        {
+            Vector2Int dir = Vector2Int.zero;
+
+            if (player.nextPos.x > gridPos.x)
             {
                 dir.x = 1;
             }
-            else if (dir.x < 0)
+            if (player.nextPos.x < gridPos.x)
             {
                 dir.x = -1;
             }
-            else if (dir.y > 0)
+            if (player.nextPos.y > gridPos.y)
             {
                 dir.y = 1;
             }
-            else if (dir.y < 0)
+            if (player.nextPos.y < gridPos.y)
             {
                 dir.y = -1;
             }
 
-            if (!isStun)
+            if (dir.x != 0 && dir.y != 0) //movimiento diagonal
             {
-                isMoving = true;
-                Move(dir);
+                int ranXY = Random.Range(0, 2);
+                if (ranXY == 0)
+                {
+                    dir.y = 0;
+                }
+                else
+                {
+                    dir.x = 0;
+                }
             }
-            else
-            {
-                isStun = false;
-            }
 
-            playerOldPos = player.gridPos;
+            Move(dir);
         }
-
-        if (gridPos == player.gridPos)
-        {
-            player.TakeDamage(damage);
-        }
-    }
-
-    public override void InteractWhitOtherEntity(GridEntity other)
-    {
-        other.InteractWhitOtherEntity(this);
-    }
-
-    protected override void Die()
-    {
-        Destroy(this);
     }
 }

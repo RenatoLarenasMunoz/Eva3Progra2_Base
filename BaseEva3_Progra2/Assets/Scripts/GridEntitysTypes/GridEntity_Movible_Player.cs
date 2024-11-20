@@ -5,7 +5,10 @@ using UnityEngine;
 public class GridEntity_Movible_Player : GridEntity_Movible
 {
     public GridShooter gridShooter;
+    public GridEntity_Movible_Enemy enemy;
+    public bool isShooting;
     public Vector2Int startPos;
+    public Vector2Int nextPos;
 
     protected override void Awake2()
     {
@@ -19,6 +22,11 @@ public class GridEntity_Movible_Player : GridEntity_Movible
 
     protected override void Update2()
     {
+        if (isShooting)
+        {
+            isShooting = false;
+        }
+
         if (!isMoving)
         {
             MoveInputs();
@@ -26,9 +34,10 @@ public class GridEntity_Movible_Player : GridEntity_Movible
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            isShooting = true;
             gridShooter.Shoot(gridPos);
         }
-    }  
+    }
 
     public void SetPlayerPos(Vector2Int pos)
     {
@@ -62,7 +71,12 @@ public class GridEntity_Movible_Player : GridEntity_Movible
         if (dir.magnitude != 0)
         {
             transform.forward = new Vector3(dir.x, 0, dir.y);
-            Move(dir);
+
+            if (enemy.gridPos != gridPos + dir)
+            {
+                nextPos = gridPos + dir;
+                Move(dir);
+            }
         }
     }
 

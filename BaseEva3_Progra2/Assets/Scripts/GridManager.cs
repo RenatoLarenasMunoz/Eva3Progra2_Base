@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     //El arreglo requiere el mismo orden que el enum
+    string[] mapa;
     public GameObject[] gridPiecesPrefabs;
     public Vector2Int gridSize;
     public Transform parent;
@@ -22,7 +23,26 @@ public class GridManager : MonoBehaviour
 
     private void Awake()
     {
+        CrearMapa();
         CreateGrid();
+    }
+
+    void CrearMapa()
+    {
+        mapa = new string[gridSize.x];
+
+
+
+        mapa[9] = "XXXXXXXXXXXXX";
+        mapa[8] = "XOOOYOOOOOOOX";
+        mapa[7] = "XOOOYOOOOOOOX";
+        mapa[6] = "XOOOOOOYYYYOX";
+        mapa[5] = "XOOOOOYOOOOOX";
+        mapa[4] = "XOOOOOYOOOOOX";
+        mapa[3] = "XOYYYYYOOOOOX";
+        mapa[2] = "XOOOOOOYYOOOX";
+        mapa[1] = "XOOOOOOYOOOOX";
+        mapa[0] = "XXXXXXXXXXXXX";
     }
 
     //Se encarga de crear la grilla
@@ -31,37 +51,34 @@ public class GridManager : MonoBehaviour
         //Inicializo la matriz (arreglo bidimensional) segun el tamaño de la grilla
         grid = new GridPiece[gridSize.x, gridSize.y];
 
-
         for (int x = 0; x < gridSize.x; x++)
         {
-            for(int z = 0; z < gridSize.y; z++)
+            for (int z = 0; z < gridSize.y; z++)
             {
                 //Obtengo posicion en grilla
                 Vector2Int gridPos = new Vector2Int(x, z);
-                
+
                 //Segun la posicion devuelvo un tipo de pieza
                 GridPieceType gridPieceType = GetPieceType(gridPos);
-                
+
                 //Ocupo la posicion en grilla y el tipo de pieza para instancia la pieza
                 GridPiece newPiece = CreatePiece(gridPieceType, gridPos);
                 newPiece.pos = gridPos;
                 //Guardo la pieza creada en la matriz
-                grid[x,z] = newPiece;
+                grid[x, z] = newPiece;
             }
         }
-
-        key.win = win;
     }
 
     //Se encarga de instanciar la pieza y setearla
     GridPiece CreatePiece(GridPieceType pieceType, Vector2Int gridPos)
     {
         GridPiece piece = null;
-        Vector3 position = new Vector3(gridPos.x,-0.5f, gridPos.y);
+        Vector3 position = new Vector3(gridPos.x, -0.5f, gridPos.y);
         GameObject pref = gridPiecesPrefabs[(int)pieceType];
 
-        GameObject pieceObj = Instantiate(pref, position, Quaternion.identity,parent);
-        
+        GameObject pieceObj = Instantiate(pref, position, Quaternion.identity, parent);
+
         switch (pieceType)
         {
             case GridPieceType.Empty:
@@ -112,35 +129,56 @@ public class GridManager : MonoBehaviour
                 key = gridPiece_Key;
                 break;
         }
-        
-        return piece;   
+
+        return piece;
     }
 
     //Se encarga de elegir el tipo de pieza segun la posicion
     GridPieceType GetPieceType(Vector2Int pos)
     {
-        GridPieceType gridPieceType = GridPieceType.Empty;
-        if(pos.x == 0 || pos.x == gridSize.x-1 || pos.y == 0 || pos.y == gridSize.y-1)
+        //GridPieceType gridPieceType = GridPieceType.Empty;
+        if (pos.x == 0 || pos.x == gridSize.x - 1 || pos.y == 0 || pos.y == gridSize.y - 1)
         {
-            gridPieceType = GridPieceType.Wall;
+            return GridPieceType.Wall;
         }
-        else if (pos.x == 1 || pos.x == gridSize.x - 2 || pos.y == 1 || pos.y == gridSize.y - 2)
+        //else if (pos.x == 1 || pos.x == gridSize.x - 2 || pos.y == 1 || pos.y == gridSize.y - 2)
+        //{
+        //    gridPieceType = GridPieceType.DestructibleWall;
+        //}
+        //return gridPieceType;
+
+        string linea = mapa[pos.y];
+        char celda = linea[pos.x];
+
+        switch (celda)
         {
-            gridPieceType = GridPieceType.DestructibleWall;
+            case 'O':
+                return GridPieceType.Empty;
+                break;
+            case 'X':
+                return GridPieceType.Wall;
+                break;
+            case 'Y':
+                return GridPieceType.DestructibleWall;
+                break;
+            case 'W':
+                return GridPieceType.Win;
+                break;
+            case 'K':
+                return GridPieceType.Key;
+                break;
+            case 'S':
+                return GridPieceType.Spike;
+                break;
+            default:
+                return GridPieceType.Empty;
+                break;
         }
-        else if(pos.x == 3 && pos.y == 3)
-        {
-            gridPieceType = GridPieceType.Spike;
-        }
-        else if (pos.x == 7 && pos.y == 7)
-        {
-            gridPieceType = GridPieceType.Win;
-        }
-        else if (pos.x == 2 && pos.y == 5)
-        {
-            gridPieceType = GridPieceType.Key;
-        }
-        return gridPieceType;
+
+
+
+
+
     }
 
     public bool IsPieceWalkable(Vector2Int piecePos)
@@ -150,7 +188,7 @@ public class GridManager : MonoBehaviour
 
     public GridPiece GetGridPiece(Vector2Int piecePos)
     {
-        return grid[piecePos.x,piecePos.y];
+        return grid[piecePos.x, piecePos.y];
     }
 
     public bool IsPosOnArray(Vector2Int pos)
