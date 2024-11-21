@@ -125,3 +125,4 @@ MonoBehaviour:
   pieceType: 0
   isAvaliable: 0
   yOffSet: 0
+  win: {fileID: 0}

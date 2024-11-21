@@ -41,7 +41,7 @@ public class GridEntity_Movible_Enemy : GridEntity_Movible
     {
         if (player.gridPos == gridPos)
         {
-            player.TakeDamage(player.life);
+            player.currentLife = 0;
         }
 
         if (player.isMoving || player.isShooting)

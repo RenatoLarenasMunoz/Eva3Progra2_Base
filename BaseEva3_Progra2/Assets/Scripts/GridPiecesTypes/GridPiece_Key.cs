@@ -6,7 +6,6 @@ public class GridPiece_Key : GridPiece
 {
     public bool isAvaliable;
     public float yOffSet;
-    GameObject keyPiece;
     public GridPiece_Win win;
 
 
@@ -14,7 +13,6 @@ public class GridPiece_Key : GridPiece
     {
         Vector3 pos = transform.position;
         pos += Vector3.up * yOffSet;
-        keyPiece = Instantiate(winPref, pos, Quaternion.identity, transform);
     }
 
     public void PickKey()
@@ -23,6 +21,8 @@ public class GridPiece_Key : GridPiece
         {
             isAvaliable = false;
             win.isOpen = true;
+
+            GetComponent<Renderer>().material.color = Color.blue;
         }
     }
 

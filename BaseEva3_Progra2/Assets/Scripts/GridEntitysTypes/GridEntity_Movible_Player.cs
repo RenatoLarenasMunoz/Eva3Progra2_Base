@@ -37,6 +37,11 @@ public class GridEntity_Movible_Player : GridEntity_Movible
             isShooting = true;
             gridShooter.Shoot(gridPos);
         }
+
+        if (currentLife <= 0)
+        {
+            Die();
+        }
     }
 
     public void SetPlayerPos(Vector2Int pos)

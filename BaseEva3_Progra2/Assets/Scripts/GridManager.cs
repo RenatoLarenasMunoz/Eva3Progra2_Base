@@ -25,6 +25,7 @@ public class GridManager : MonoBehaviour
     {
         CrearMapa();
         CreateGrid();
+        key.win = win;
     }
 
     void CrearMapa()
@@ -32,16 +33,15 @@ public class GridManager : MonoBehaviour
         mapa = new string[gridSize.x];
 
 
-
         mapa[9] = "XXXXXXXXXXXXX";
-        mapa[8] = "XOOOYOOOOOOOX";
-        mapa[7] = "XOOOYOOOOOOOX";
-        mapa[6] = "XOOOOOOYYYYOX";
-        mapa[5] = "XOOOOOYOOOOOX";
-        mapa[4] = "XOOOOOYOOOOOX";
-        mapa[3] = "XOYYYYYOOOOOX";
-        mapa[2] = "XOOOOOOYYOOOX";
-        mapa[1] = "XOOOOOOYOOOOX";
+        mapa[8] = "XOOOOOOOOOOWX";
+        mapa[7] = "XOOOOOYOOOYYX";
+        mapa[6] = "XOOSSOYOSSOOX";
+        mapa[5] = "XOOOYYOOOOOOX";
+        mapa[4] = "XOSSSYOSYSOOX";
+        mapa[3] = "XOOOOYOYKYOOX";
+        mapa[2] = "XOOOOOOSYSOOX";
+        mapa[1] = "XOOOOOOOOOOOX";
         mapa[0] = "XXXXXXXXXXXXX";
     }
 
