@@ -6,13 +6,12 @@ public class GridPiece_Win : GridPiece
 {
     public bool isOpen;
     public float yOffSet;
-    GameObject winPiece;
+    public GameObject sparkles;
 
     public void CreateWin(GameObject winPref)
     {
         Vector3 pos = transform.position;
         pos += Vector3.up * yOffSet;
-        winPiece = Instantiate(winPref, pos, Quaternion.identity, transform);
     }
 
     public void CheckIfOpen()

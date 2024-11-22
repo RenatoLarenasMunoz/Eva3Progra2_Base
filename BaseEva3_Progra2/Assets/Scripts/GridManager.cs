@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GridManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class GridManager : MonoBehaviour
 
     public GridPiece[,] grid;
 
+    public TextMeshProUGUI textoFin;
     GridPiece_Win win;
     GridPiece_Key key;
 

@@ -177,6 +177,7 @@ MonoBehaviour:
   spikePref: {fileID: 2329805812140370787, guid: 92aacabbe660e684693c9593bf47de53, type: 3}
   winPref: {fileID: 4467518323712378377, guid: 4da74b4a9845f5743be0d981e43c3e22, type: 3}
   keyPref: {fileID: 454856421429379879, guid: 34c2ad2ebc893744185171c72a8ef4ae, type: 3}
+  textoFin: {fileID: 0}
 --- !u!4 &389208968
 Transform:
   m_ObjectHideFlags: 0
