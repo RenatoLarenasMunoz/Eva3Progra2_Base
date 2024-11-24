@@ -19,6 +19,7 @@ public class GridPiece_Win : GridPiece
         if (isOpen)
         {
             Debug.Log("Victoria");
+
         }
         else
         {

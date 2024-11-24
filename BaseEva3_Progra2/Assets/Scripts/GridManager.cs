@@ -20,6 +20,7 @@ public class GridManager : MonoBehaviour
     public GridPiece[,] grid;
 
     public TextMeshProUGUI textoFin;
+    public string winText;
     GridPiece_Win win;
     GridPiece_Key key;
 

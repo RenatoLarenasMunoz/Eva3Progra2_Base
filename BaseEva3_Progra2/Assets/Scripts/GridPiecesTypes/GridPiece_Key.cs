@@ -21,6 +21,7 @@ public class GridPiece_Key : GridPiece
         {
             isAvaliable = false;
             win.isOpen = true;
+            win.sparkles.SetActive(true);
 
             GetComponent<Renderer>().material.color = Color.blue;
         }
