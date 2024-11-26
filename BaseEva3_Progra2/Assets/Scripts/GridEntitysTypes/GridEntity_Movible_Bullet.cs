@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridEntity_Movible_Bullet : GridEntity_Movible
 {
     public Vector2Int bulletDir;
+    GridEntity_Movible_Enemy enemy;
     public float dmg;
 
     protected override void Awake2()

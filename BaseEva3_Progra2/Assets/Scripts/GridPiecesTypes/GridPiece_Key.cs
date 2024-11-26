@@ -6,6 +6,7 @@ public class GridPiece_Key : GridPiece
 {
     public bool isAvaliable;
     public float yOffSet;
+    public GameObject sparks;
     public GridPiece_Win win;
 
 
@@ -24,6 +25,7 @@ public class GridPiece_Key : GridPiece
             win.sparkles.SetActive(true);
 
             GetComponent<Renderer>().material.color = Color.blue;
+            sparks.SetActive(false);
         }
     }
 

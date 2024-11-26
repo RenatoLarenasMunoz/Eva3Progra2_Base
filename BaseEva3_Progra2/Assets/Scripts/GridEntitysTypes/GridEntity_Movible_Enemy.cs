@@ -7,7 +7,7 @@ public class GridEntity_Movible_Enemy : GridEntity_Movible
     public GridEntity_Movible_Player player;
     public Vector2Int startPos;
 
-    float timer;
+    public bool isStunned = false;
 
 
     public override void InteractWhitOtherEntity(GridEntity other)
@@ -44,7 +44,7 @@ public class GridEntity_Movible_Enemy : GridEntity_Movible
             player.currentLife = 0;
         }
 
-        if (player.isMoving || player.isShooting)
+        if (player.isMoving && !isStunned || player.isShooting && !isStunned)
         {
             Vector2Int dir = Vector2Int.zero;
 
@@ -79,6 +79,10 @@ public class GridEntity_Movible_Enemy : GridEntity_Movible
             }
 
             Move(dir);
+        }
+        else
+        {
+            isStunned = false;
         }
     }
 }
