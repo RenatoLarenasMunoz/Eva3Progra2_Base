@@ -90,6 +90,11 @@ public class GridEntity_Movible_Player : GridEntity_Movible
         other.InteractWhitOtherEntity(this);
     }
 
+    public override void TakeDamage(float dmg)
+    {
+        base.TakeDamage(dmg);
+        gridManager.playerLife.fillAmount = currentLife / life;
+    }
 
     protected override void Die()
     {

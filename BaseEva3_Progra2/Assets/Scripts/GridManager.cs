@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GridManager : MonoBehaviour
@@ -20,6 +21,7 @@ public class GridManager : MonoBehaviour
     public GridPiece[,] grid;
 
     public TextMeshProUGUI textoFin;
+    public Image playerLife;
     public string winText;
     public bool gameFin = false;
     GridPiece_Win win;
