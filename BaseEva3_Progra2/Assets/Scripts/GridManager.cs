@@ -21,6 +21,7 @@ public class GridManager : MonoBehaviour
 
     public TextMeshProUGUI textoFin;
     public string winText;
+    public bool gameFin = false;
     GridPiece_Win win;
     GridPiece_Key key;
 
@@ -115,6 +116,7 @@ public class GridManager : MonoBehaviour
                 break;
             case GridPieceType.Win:
                 GridPiece_Win gridPiece_Win = pieceObj.GetComponent<GridPiece_Win>();
+                gridPiece_Win.grid = this;
                 gridPiece_Win.isWalkable = true;
                 gridPiece_Win.isEmpty = true;
                 gridPiece_Win.isOpen = false;

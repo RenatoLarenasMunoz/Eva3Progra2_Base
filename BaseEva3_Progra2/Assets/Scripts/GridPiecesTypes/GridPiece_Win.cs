@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GridPiece_Win : GridPiece
 {
+    public GridManager grid;
     public bool isOpen;
     public float yOffSet;
     public GameObject sparkles;
@@ -19,7 +21,10 @@ public class GridPiece_Win : GridPiece
         if (isOpen)
         {
             Debug.Log("Victoria");
-
+            grid.gameFin = true;
+            grid.winText = "Victoria";
+            grid.textoFin.color = Color.yellow;
+            grid.textoFin.text = grid.winText;
         }
         else
         {

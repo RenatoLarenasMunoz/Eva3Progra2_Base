@@ -27,12 +27,12 @@ public class GridEntity_Movible_Player : GridEntity_Movible
             isShooting = false;
         }
 
-        if (!isMoving)
+        if (!isMoving && gridManager.gameFin == false)
         {
             MoveInputs();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && gridManager.gameFin == false)
         {
             isShooting = true;
             gridShooter.Shoot(gridPos);
@@ -94,6 +94,9 @@ public class GridEntity_Movible_Player : GridEntity_Movible
     protected override void Die()
     {
         print("PlayerDead");
+        gridManager.winText = "Derrota";
+        gridManager.textoFin.color = Color.red;
+        gridManager.textoFin.text = gridManager.winText;
         gameObject.SetActive(false);
     }
 }
