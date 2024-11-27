@@ -6,6 +6,8 @@ public class GridEntity_Movible_Player : GridEntity_Movible
 {
     public GridShooter gridShooter;
     public GridEntity_Movible_Enemy enemy;
+    public AudioSource source;
+    public AudioClip moveSound;
     public bool isShooting;
     public Vector2Int startPos;
     public Vector2Int nextPos;
@@ -76,6 +78,7 @@ public class GridEntity_Movible_Player : GridEntity_Movible
         if (dir.magnitude != 0)
         {
             transform.forward = new Vector3(dir.x, 0, dir.y);
+            source.PlayOneShot(moveSound, 0.5f);
 
             if (enemy.gridPos != gridPos + dir)
             {
@@ -93,13 +96,13 @@ public class GridEntity_Movible_Player : GridEntity_Movible
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
-        gridManager.playerLife.fillAmount = currentLife / life;
+        gridManager.playerLife.fillAmount = this.currentLife / this.life;
     }
 
     protected override void Die()
     {
-        print("PlayerDead");
-        gridManager.winText = "Derrota";
+        gridManager.source.PlayOneShot(gridManager.dieSound, 0.5f);
+        gridManager.winText = "DERROTA";
         gridManager.textoFin.color = Color.red;
         gridManager.textoFin.text = gridManager.winText;
         gameObject.SetActive(false);

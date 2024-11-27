@@ -24,6 +24,8 @@ public class GridManager : MonoBehaviour
     public Image playerLife;
     public string winText;
     public bool gameFin = false;
+    public AudioSource source;
+    public AudioClip dieSound;
     GridPiece_Win win;
     GridPiece_Key key;
 

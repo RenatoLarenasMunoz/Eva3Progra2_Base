@@ -22,7 +22,7 @@ public class GridPiece_Win : GridPiece
         {
             Debug.Log("Victoria");
             grid.gameFin = true;
-            grid.winText = "Victoria";
+            grid.winText = "VICTORIA";
             grid.textoFin.color = Color.yellow;
             grid.textoFin.text = grid.winText;
         }
