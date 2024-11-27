@@ -42,6 +42,7 @@ public class GridEntity_Movible_Enemy : GridEntity_Movible
         if (player.gridPos == gridPos)
         {
             player.currentLife = 0;
+            gridManager.playerLife.fillAmount = player.currentLife / player.life;
         }
 
         if (player.isMoving && !isStunned || player.isShooting && !isStunned)
